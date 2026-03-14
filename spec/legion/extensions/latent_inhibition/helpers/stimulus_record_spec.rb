@@ -107,9 +107,12 @@ RSpec.describe Legion::Extensions::LatentInhibition::Helpers::StimulusRecord do
       expect(record.inhibition_score).to be < prior
     end
 
-    it 'clamps score at 0.0' do
-      record.disinhibit!(intensity: 1000.0)
-      expect(record.inhibition_score).to eq(0.0)
+    it 'clamps score at 0.0 when reduction exceeds current score' do
+      # 3 exposures => score = 0.09, which is less than DISINHIBITION_RATE (0.2)
+      fresh = Legion::Extensions::LatentInhibition::Helpers::StimulusRecord.new(label: 'tiny')
+      3.times { fresh.expose! }
+      fresh.disinhibit!(intensity: 1.0)
+      expect(fresh.inhibition_score).to eq(0.0)
     end
 
     it 'returns self for chaining' do

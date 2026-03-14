@@ -18,11 +18,12 @@ RSpec.describe Legion::Extensions::LatentInhibition::Client do
 
   it 'demonstrates the full latent inhibition cycle' do
     # Pre-expose stimulus without consequence — builds inhibition
-    10.times { client.expose(label: 'neutral_tone') }
+    # 15 exposures => inhibition = 0.45, effectiveness = 0.55
+    15.times { client.expose(label: 'neutral_tone') }
 
     # Now try to form an association
     result = client.associate(label: 'neutral_tone', outcome: 'shock')
-    expect(result[:effectiveness]).to be < 0.7
+    expect(result[:effectiveness]).to be < 0.6
 
     # Compare with a novel stimulus
     novel_result = client.associate(label: 'new_tone', outcome: 'shock')

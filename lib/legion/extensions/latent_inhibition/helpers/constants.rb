@@ -11,11 +11,11 @@ module Legion
           NOVELTY_THRESHOLD    = 3
 
           INHIBITION_LABELS = {
-            (0.0..0.2)   => :uninhibited,
-            (0.2..0.4)   => :low,
-            (0.4..0.6)   => :moderate,
-            (0.6..0.8)   => :high,
-            (0.8..1.0)   => :saturated
+            (0.0..0.2) => :uninhibited,
+            (0.2..0.4) => :low,
+            (0.4..0.6) => :moderate,
+            (0.6..0.8) => :high,
+            (0.8..1.0) => :saturated
           }.freeze
 
           NOVELTY_LABELS = {

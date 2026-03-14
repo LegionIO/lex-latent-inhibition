@@ -122,7 +122,7 @@ RSpec.describe Legion::Extensions::LatentInhibition::Helpers::InhibitionEngine d
     before do
       5.times  { engine.expose_stimulus(label: 'low') }
       20.times { engine.expose_stimulus(label: 'high') }
-      1.times  { engine.expose_stimulus(label: 'fresh') }
+      engine.expose_stimulus(label: 'fresh')
     end
 
     it 'returns stimuli ordered by inhibition_score descending' do

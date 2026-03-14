@@ -61,13 +61,13 @@ module Legion
             return empty_report if stimuli.empty?
 
             {
-              total_stimuli:    stimuli.size,
-              novel_count:      stimuli.count(&:novel?),
-              inhibited_count:  stimuli.count { |s| s.inhibition_score > 0.0 },
-              saturated_count:  stimuli.count { |s| s.inhibition_label == :saturated },
-              mean_inhibition:  (stimuli.sum(&:inhibition_score) / stimuli.size).round(10),
-              max_inhibition:   stimuli.map(&:inhibition_score).max.round(10),
-              label_breakdown:  label_breakdown(stimuli)
+              total_stimuli:   stimuli.size,
+              novel_count:     stimuli.count(&:novel?),
+              inhibited_count: stimuli.count { |s| s.inhibition_score > 0.0 },
+              saturated_count: stimuli.count { |s| s.inhibition_label == :saturated },
+              mean_inhibition: (stimuli.sum(&:inhibition_score) / stimuli.size).round(10),
+              max_inhibition:  stimuli.map(&:inhibition_score).max.round(10),
+              label_breakdown: label_breakdown(stimuli)
             }
           end
 
